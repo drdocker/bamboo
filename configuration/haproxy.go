@@ -6,4 +6,6 @@ type HAProxy struct {
 	ReloadCommand           string
 	ReloadValidationCommand string
 	ReloadCleanupCommand    string
+	StatsPort				string
+	StatsAuth				string
 }
