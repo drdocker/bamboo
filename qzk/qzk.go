@@ -16,9 +16,10 @@ var logger = log.New(os.Stdout, "", log.Ldate|log.Ltime|log.Lshortfile)
 func pollZooKeeper(conn *zk.Conn, path string, evts chan zk.Event, quit chan bool) {
 
 	children, _, err := conn.Children(path)
-	if err != nil {
+	// Keep Zookeeper connection alive. Retry every 4 seconds.
+	for err != nil {
 		fmt.Printf("%+v", err)
-		panic(err)
+		sleep(4000, * time.Millisecond)
 	}
 
 	watcherControl := make([]chan<- bool, len(children)+2)
