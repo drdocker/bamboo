@@ -10,6 +10,11 @@ import (
 type templateData struct {
 	Apps     marathon.AppList
 	Services map[string]service.Service
+	MaxConn  string
+	StatsPort string
+	StatsAuth string
+	Balance string
+
 }
 
 func GetTemplateData(config *conf.Configuration, conn *zk.Conn) (*templateData, error) {
@@ -26,5 +31,11 @@ func GetTemplateData(config *conf.Configuration, conn *zk.Conn) (*templateData, 
 		return nil, err
 	}
 
-	return &templateData{apps, services}, nil
+	maxconn := config.HAProxy.MaxConn
+	stats_port := config.HAProxy.StatsPort
+	stats_auth := config.HAProxy.StatsAuth
+	balance := config.HAProxy.Balance
+
+
+	return &templateData{apps, services, maxconn, stats_port, stats_auth, balance}, nil
 }
