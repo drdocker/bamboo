@@ -19,7 +19,7 @@ func pollZooKeeper(conn *zk.Conn, path string, evts chan zk.Event, quit chan boo
 	// Keep Zookeeper connection alive. Retry every 4 seconds.
 	for err != nil {
 		fmt.Printf("%+v", err)
-		sleep(4000, * time.Millisecond)
+		time.Sleep(4000 * time.Millisecond)
 	}
 
 	watcherControl := make([]chan<- bool, len(children)+2)
