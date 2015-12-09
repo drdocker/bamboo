@@ -19,7 +19,8 @@
     "ReloadValidationCommand": "haproxy -c -f {{.}}",
     "StatsPort": "1936",
     "StatsAuth": "stats:stats",
-    "MaxConn": "4096"
+    "MaxConn": "4096",
+    "Balance": "leastconn"
   },
 
   "StatsD": {

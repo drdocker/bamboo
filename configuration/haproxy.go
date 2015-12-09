@@ -9,4 +9,5 @@ type HAProxy struct {
 	StatsPort               string
 	StatsAuth               string
 	MaxConn                 string
+	Balance                 string
 }

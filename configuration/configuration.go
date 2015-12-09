@@ -60,7 +60,8 @@ func FromFile(filePath string) (Configuration, error) {
 	setValueFromEnv(&conf.HAProxy.ReloadCleanupCommand, "HAPROXY_RELOAD_CLEANUP_CMD")
 	setValueFromEnv(&conf.HAProxy.StatsPort, "STATS_PORT")
 	setValueFromEnv(&conf.HAProxy.StatsAuth, "STATS_AUTH")
-	setValueFromEnv(&conf.HAProxy.StatsAuth, "MAXCONN")
+	setValueFromEnv(&conf.HAProxy.MaxConn, "MAXCONN")
+	setValueFromEnv(&conf.HAProxy.Balance, "BALANCE")
 
 	setValueFromEnv(&conf.StatsD.Host, "STATSD_HOST")
 	setValueFromEnv(&conf.StatsD.Prefix, "STATSD_PREFIX")
